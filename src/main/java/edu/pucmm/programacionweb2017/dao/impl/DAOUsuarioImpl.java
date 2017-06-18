@@ -12,9 +12,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public class DAOUsuarioImpl extends DAOImpl<Usuario, Long> implements DAOUsuario {
     private static final Logger logger = LoggerFactory.getLogger(DAOUsuarioImpl.class);
 

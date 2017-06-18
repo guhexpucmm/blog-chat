@@ -6,14 +6,14 @@ var pkg = require('./package.json');
 // NOTE: requires `npm install` before running!
 gulp.task('copy', function() {
     gulp.src(['node_modules/bootstrap/dist/**/*', '!**/npm.js', '!**/bootstrap-theme.*', '!**/*.map'])
-        .pipe(gulp.dest('vendor/bootstrap'))
+        .pipe(gulp.dest('vendor/bootstrap'));
 
     gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
-        .pipe(gulp.dest('vendor/jquery'))
+        .pipe(gulp.dest('vendor/jquery'));
 
     gulp.src(['node_modules/tether/dist/js/*.js'])
         .pipe(gulp.dest('vendor/tether'))
-})
+});
 
 // Default task
 gulp.task('default', ['copy']);
@@ -25,7 +25,7 @@ gulp.task('browserSync', function() {
             baseDir: ''
         },
     })
-})
+});
 
 // Dev task with browserSync
 gulp.task('dev', ['browserSync'], function() {

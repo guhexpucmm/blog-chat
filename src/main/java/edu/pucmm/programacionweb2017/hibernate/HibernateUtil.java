@@ -23,9 +23,6 @@ import org.hibernate.service.spi.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Created by gusta on 12/22/2016.
- */
 public class HibernateUtil {
     private static final Logger logger = LoggerFactory.getLogger(HibernateUtil.class);
     public static SessionFactory sessionFactory = buildSessionFactory();

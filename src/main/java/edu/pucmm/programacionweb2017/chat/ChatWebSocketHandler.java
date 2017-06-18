@@ -14,14 +14,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static j2html.TagCreator.*;
 
-/**
- * Created by gusta on 18-Jun-17.
- */
 @WebSocket
 public class ChatWebSocketHandler {
 
-    static Map<Session, String> userUsernameMap = new ConcurrentHashMap<>();
-    static int nextUserNumber = 1; //Assign to username for next connecting user
+    private static Map<Session, String> userUsernameMap = new ConcurrentHashMap<>();
+    private static int nextUserNumber = 1; //Assign to username for next connecting user
     private String sender, msg;
 
     @OnWebSocketConnect
@@ -44,7 +41,7 @@ public class ChatWebSocketHandler {
     }
 
     //Sends a message from one user to all users, along with a list of current usernames
-    public void broadcastMessage(String sender, String message) {
+    private void broadcastMessage(String sender, String message) {
         userUsernameMap.keySet().stream().filter(Session::isOpen).forEach((Session session) -> {
             try {
                 session.getRemote().sendString(String.valueOf(new JSONObject()

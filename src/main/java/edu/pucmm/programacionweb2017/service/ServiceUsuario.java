@@ -5,9 +5,6 @@ import edu.pucmm.programacionweb2017.entity.Usuario;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public class ServiceUsuario {
     DAOUsuarioImpl daoUsuario;
 

@@ -4,9 +4,6 @@ import edu.pucmm.programacionweb2017.entity.Etiqueta;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public interface DAOEtiqueta extends DAO<Etiqueta, Long> {
     @Override
     void insertar(Etiqueta etiqueta);

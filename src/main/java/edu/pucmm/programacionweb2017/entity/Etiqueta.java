@@ -2,9 +2,6 @@ package edu.pucmm.programacionweb2017.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by mt on 06/06/17.
- */
 @Entity
 @Table(name = "etiqueta")
 @Access(AccessType.FIELD)

@@ -4,9 +4,6 @@ import edu.pucmm.programacionweb2017.entity.Usuario;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public interface DAOUsuario extends DAO<Usuario, Long> {
     @Override
     void insertar(Usuario usuario);

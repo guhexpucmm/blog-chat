@@ -7,9 +7,6 @@ import edu.pucmm.programacionweb2017.entity.Valoracion;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public class ServiceArticulo{
     DAOArticuloImpl daoArticulo;
 

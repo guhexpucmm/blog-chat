@@ -23,9 +23,6 @@ import org.slf4j.LoggerFactory;
 import java.sql.Types;
 import java.util.Properties;
 
-/**
- * Created by gusta on 12/22/2016.
- */
 public class HibernateVarcharEnum extends EnumType {
     private static final Logger logger = LoggerFactory.getLogger(HibernateVarcharEnum.class);
 

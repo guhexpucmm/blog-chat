@@ -12,9 +12,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public class DAOEtiquetaImpl extends DAOImpl<Etiqueta, Long> implements DAOEtiqueta {
     private static final Logger logger = LoggerFactory.getLogger(DAOEtiquetaImpl.class);
 

@@ -12,9 +12,6 @@ import spark.Route;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by gusta on 17-Jun-17.
- */
 public class InicioController {
     private static final Logger logger = LoggerFactory.getLogger(InicioController.class);
 

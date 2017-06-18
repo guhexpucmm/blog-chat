@@ -16,9 +16,6 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public class DAOArticuloImpl extends DAOImpl<Articulo, Long> implements DAOArticulo {
     private static final Logger logger = LoggerFactory.getLogger(DAOArticuloImpl.class);
 

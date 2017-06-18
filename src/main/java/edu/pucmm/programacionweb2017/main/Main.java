@@ -8,10 +8,6 @@ import edu.pucmm.programacionweb2017.service.ServiceUsuario;
 import edu.pucmm.programacionweb2017.util.Path;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import spark.Request;
-import spark.Response;
-import spark.Route;
-import spark.Session;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;
@@ -19,18 +15,17 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
-    public Main() {
+    private Main() {
         logger.info("Iniciando aplicacion web.");
         enableDebugScreen();
         setConfiguraciones();
         setServidor();
         setRedireccion();
-        //setFilter();
         setRutas();
         setUsuario();
     }
 
-    public static void setUsuario() {
+    private static void setUsuario() {
         logger.info("Configurando usuario por defecto.");
         Usuario usuario = new Usuario(
                 "admin",
@@ -72,24 +67,7 @@ public class Main {
         });
     }
 
-    private void setFilter() {
-        logger.info("Configurando filtro");
-        before("/*/", (request, response) -> {
-            Session session = request.session(true);
-            boolean auth = session.attribute(Path.Web.AUTH_STATUS) != null ?
-                    session.attribute(Path.Web.AUTH_STATUS) : false;
-
-            logger.info("Status = " + auth);
-
-            if (!auth) {
-                logger.warn("Area segura, necesita iniciar sesion.");
-                response.redirect(Path.Web.INICIO);
-                halt(401);
-            }
-        });
-    }
-
-    public void setRutas() {
+    private void setRutas() {
         get(Path.Web.INICIO, InicioController.paginaInicio);
         post(Path.Web.INICIAR_SESION, SesionController.iniciarSesion);
         post(Path.Web.CERRAR_SESION, SesionController.cerrarSesion);
@@ -110,15 +88,8 @@ public class Main {
         before(Path.Web.NUEVO_USUARIO, FiltroController.filtro);
         get(Path.Web.NUEVO_USUARIO, UsuarioController.paginaNuevoUsuario);
         post(Path.Web.NUEVO_USUARIO, UsuarioController.crearNuevoUsuario);
-    }
 
-    @FunctionalInterface
-    private interface ICRoute extends Route {
-        default Object handle(Request request, Response response) throws Exception {
-            handle(request);
-            return "";
-        }
-
-        void handle(Request request) throws Exception;
+        get(Path.Web.NO_TIENE_PERMISOS, NoTienePermisosController.paginaNoTienePermisos);
+        get("*", NoEncontradoController.paginaNoEncontrada);
     }
 }

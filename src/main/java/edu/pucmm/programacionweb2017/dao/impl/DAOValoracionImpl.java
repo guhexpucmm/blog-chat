@@ -13,9 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-/**
- * Created by gusta on 16-Jun-17.
- */
 public class DAOValoracionImpl extends DAOImpl<Valoracion, Long> implements DAOValoracion {
     private static final Logger logger = LoggerFactory.getLogger(DAOImpl.class);
 

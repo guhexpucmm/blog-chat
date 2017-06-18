@@ -3,9 +3,6 @@ package edu.pucmm.programacionweb2017.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Created by gusta on 17-Jun-17.
- */
 public class Path {
     private static final Logger logger = LoggerFactory.getLogger(Path.class);
 
@@ -28,9 +25,16 @@ public class Path {
 
         //Usuarios
         public static String NUEVO_USUARIO = "/usuario/nuevo/";
+        public static String MODIFICAR_USUARIO = "/usuario/modificar/";
+        public static String ELIMINAR_USUARIO = "/usuario/eliminar";
+        public static String VER_USUARIO = "/usuario/";
 
         //Etiquetas
         public static String ETIQUETA = "/etiqueta/";
+        public static String NUEVA_ETIQUETA = "/etiqueta/nuevo";
+        public static String MODIFICAR_ETIQUETA = "/etiqueta/modificar/";
+        public static String ELIMINAR_ETIQUETA = "/etiqueta/eliminar/";
+        public static String VER_ARTICULOS_POR_ETIQUETAS = "/etiqueta/articulos/";
 
         //AUTH STATUS
         public static String AUTH_STATUS = "AUTH_STATUS";
@@ -51,5 +55,6 @@ public class Path {
         public static String NUEVO_USUARIO = "usuario/nuevo.ftl";
 
         public static String NO_TIENE_PERMISOS = "noTienePermiso.ftl";
+        public static String NO_ENCONTRADO = "noEncontrado.ftl";
     }
 }

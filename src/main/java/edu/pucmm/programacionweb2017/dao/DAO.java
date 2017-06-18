@@ -2,9 +2,6 @@ package edu.pucmm.programacionweb2017.dao;
 
 import java.util.List;
 
-/**
- * Created by gusta on 09-Jun-17.
- */
 public interface DAO<T,K extends Long> {
     void insertar(T t);
 

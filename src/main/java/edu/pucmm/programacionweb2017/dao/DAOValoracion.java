@@ -5,9 +5,6 @@ import edu.pucmm.programacionweb2017.entity.Valoracion;
 
 import java.util.List;
 
-/**
- * Created by gusta on 16-Jun-17.
- */
 public interface DAOValoracion extends DAO<Valoracion, Long> {
     @Override
     void insertar(Valoracion valoracion);

@@ -4,9 +4,6 @@ import edu.pucmm.programacionweb2017.entity.Comentario;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public interface DAOComentario extends DAO<Comentario, Long> {
     @Override
     void insertar(Comentario comentario);

@@ -1,15 +1,11 @@
 package edu.pucmm.programacionweb2017.database;
 
-import edu.pucmm.programacionweb2017.main.Main;
 import org.h2.tools.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
 
-/**
- * Created by mt on 04/06/17.
- */
 public class BootstrapServices {
     private static final Logger logger = LoggerFactory.getLogger(BootstrapServices.class);
 

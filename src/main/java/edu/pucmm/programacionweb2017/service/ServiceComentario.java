@@ -5,9 +5,6 @@ import edu.pucmm.programacionweb2017.entity.Comentario;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public class ServiceComentario {
     DAOComentarioImpl daoComentario;
 

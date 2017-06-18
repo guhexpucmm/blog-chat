@@ -6,9 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-/**
- * Created by mt on 06/06/17.
- */
 @Entity
 @Table(name = "articulo")
 @Access(AccessType.FIELD)

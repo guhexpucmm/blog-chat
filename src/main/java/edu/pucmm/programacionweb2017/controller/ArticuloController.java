@@ -3,7 +3,10 @@ package edu.pucmm.programacionweb2017.controller;
 import edu.pucmm.programacionweb2017.entity.Articulo;
 import edu.pucmm.programacionweb2017.entity.Etiqueta;
 import edu.pucmm.programacionweb2017.entity.Usuario;
-import edu.pucmm.programacionweb2017.service.*;
+import edu.pucmm.programacionweb2017.service.ServiceArticulo;
+import edu.pucmm.programacionweb2017.service.ServiceComentario;
+import edu.pucmm.programacionweb2017.service.ServiceEtiqueta;
+import edu.pucmm.programacionweb2017.service.ServiceUsuario;
 import edu.pucmm.programacionweb2017.util.Path;
 import edu.pucmm.programacionweb2017.util.VistaUtil;
 import org.slf4j.Logger;
@@ -12,9 +15,6 @@ import spark.Route;
 
 import java.util.*;
 
-/**
- * Created by gusta on 17-Jun-17.
- */
 public class ArticuloController {
     private static final Logger logger = LoggerFactory.getLogger(ArticuloController.class);
 
@@ -29,7 +29,6 @@ public class ArticuloController {
         return null;
     };
     private static ServiceComentario serviceComentario = new ServiceComentario();
-    private static ServiceValoracion serviceValoracion = new ServiceValoracion();
     private static ServiceUsuario serviceUsuario = new ServiceUsuario();
     public static Route paginaVerArticulo = (request, response) -> {
         Map<String, Object> map = new HashMap<>();
@@ -64,7 +63,7 @@ public class ArticuloController {
 
         String etiquetas = "";
 
-        articulo.getListaEtiquetas().stream().forEach(etiqueta -> {
+        articulo.getListaEtiquetas().forEach(etiqueta -> {
             etiquetas.concat(etiqueta + ",");
         });
 
@@ -102,7 +101,7 @@ public class ArticuloController {
         Usuario usuario = serviceUsuario.encontrarPorId(Long.parseLong(request.queryParams("autor")));
         Date fecha = new Date();
 
-        Articulo articulo = null;
+        Articulo articulo;
 
         if (etiquetas.isEmpty()) {
             articulo = new Articulo(titulo, cuerpo, usuario, fecha, null, null, null);

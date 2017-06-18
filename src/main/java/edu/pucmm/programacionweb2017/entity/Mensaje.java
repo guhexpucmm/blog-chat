@@ -3,9 +3,6 @@ package edu.pucmm.programacionweb2017.entity;
 import javax.persistence.*;
 import java.util.Date;
 
-/**
- * Created by gusta on 18-Jun-17.
- */
 @Entity
 @Table(name = "mensaje")
 @Access(AccessType.FIELD)

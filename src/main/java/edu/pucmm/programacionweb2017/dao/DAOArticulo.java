@@ -6,9 +6,6 @@ import edu.pucmm.programacionweb2017.entity.Valoracion;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public interface DAOArticulo extends DAO<Articulo, Long> {
     @Override
     void actualizar(Articulo articulo);

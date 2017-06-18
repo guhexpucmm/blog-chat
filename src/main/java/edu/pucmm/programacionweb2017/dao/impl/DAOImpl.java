@@ -11,9 +11,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-/**
- * Created by gusta on 10-Jun-17.
- */
 public class DAOImpl<T,K extends Long> implements DAO<T, K> {
     private static final Logger logger = LoggerFactory.getLogger(DAOImpl.class);
 
