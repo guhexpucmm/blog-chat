@@ -44,6 +44,8 @@
 
         <mapping class="edu.pucmm.programacionweb2017.entity.Valoracion"/>
 
+        <mapping class="edu.pucmm.programacionweb2017.entity.Mensaje"/>
+
     </session-factory>
 
 </hibernate-configuration>

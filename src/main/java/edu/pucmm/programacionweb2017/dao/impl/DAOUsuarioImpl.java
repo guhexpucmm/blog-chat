@@ -57,7 +57,7 @@ public class DAOUsuarioImpl extends DAOImpl<Usuario, Long> implements DAOUsuario
             session = HibernateUtil.openSession();
             transaction = session.beginTransaction();
 
-            query = session.createQuery("from Usuario where nombre = :nombre").setParameter("nombre", nombreUsuario);
+            query = session.createQuery("from Usuario where username = :username").setParameter("username", nombreUsuario);
 
             return (Usuario) query.uniqueResult();
         } catch (HibernateException e) {

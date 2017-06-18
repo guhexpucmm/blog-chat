@@ -63,25 +63,26 @@
                 <div class="card-block">
                     <h2 class="card-title">Nuevo articulo</h2>
                     <p class="card-text">
-                    <form action="/articulo/nuevo/?autor=${usuario.getId()}" method="post">
+                    <form action="/articulo/modificar/?id=${articulo.getId()}" method="post">
                         <div class="form-group">
                             <label for="Titulo">Titulo&nbsp&nbsp&nbsp</label>
                             <input class="form-username form-control" style="width:500px" type="text" name="Titu"
-                                   id="Titulo" placeholder="Titulo del blog" required><br>
+                                   id="Titulo" value="${titulo}" placeholder="Titulo del blog" required><br>
                         </div>
 
                         <div class="form-group">
                             <label for="Cuerpo">Cuerpo: </label>
                             <input class="form-username form-control" style="width:500px;height:250px" type="text"
-                                   name="Cuer" id="Cuerpo" placeholder="Cuerpo del blog" required><br>
+                                   name="Cuer" id="Cuerpo" value="${cuerpo}" placeholder="Cuerpo del blog" required><br>
                         </div>
 
                         <div class="form-group">
                             <label for="Etiqueta">Etiquetas: </label>
                             <input class="form-username form-control" style="..." type="text" name="Eti"
-                                   id="Etiqueta" placeholder="Etiquetas. Si es mas de una, separarlas por comas.">
+                                   id="Etiqueta" value="${etiquetas}"
+                                   placeholder="Etiquetas. Si es mas de una, separarlas por comas.">
                         </div>
-                        <button class="btn btn-success" type="submit">Guardar</button>
+                        <button class="btn btn-success" type="submit">Modificar</button>
                         <button class="btn btn-danger" type="button" onclick="location.href = '/inicio';">Cancelar
                         </button>
                     </form>

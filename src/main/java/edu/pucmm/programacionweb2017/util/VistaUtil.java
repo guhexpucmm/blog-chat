@@ -1,6 +1,8 @@
 package edu.pucmm.programacionweb2017.util;
 
 import freemarker.template.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.template.freemarker.FreeMarkerEngine;
 
@@ -10,6 +12,8 @@ import java.util.Map;
  * Created by gusta on 17-Jun-17.
  */
 public class VistaUtil {
+    private static final Logger logger = LoggerFactory.getLogger(VistaUtil.class);
+
     private Configuration configuration;
     private FreeMarkerEngine freeMarkerEngine;
 

@@ -69,11 +69,13 @@
 
                 <div class="card-footer">
 
-                    <button type="button" class="btn btn-default">
-                        <a href="/eliminar/articulo/?id=${articulo.getId()}">Eliminar</a>
+                    <button type="button" class="btn btn-default"
+                            onclick="location.href = '/articulo/eliminar/?id=${articulo.getId()}'">
+                        Eliminar
                     </button>
-                    <button type="button" class="btn btn-default">
-                        <a href="/modificar/articulo/?id=${articulo.getId()}">Modificar</a>
+                    <button type="button" class="btn btn-default"
+                            onclick="location.href = '/articulo/modificar/?id=${articulo.getId()}'">
+                        Modificar
                     </button>
 
                     <label>
@@ -84,12 +86,12 @@
                 <#if usuario??>
                     <div class="btn-group" role="group" aria-label="...">
                         <button type="button" class="btn btn-success"
-                                onclick="location.href = '/valoracion/?valoracion=true&usuario=${articulo.getAutor().getId()}&articulo=${articulo.getId()}'">
+                                onclick="location.href = '/valoracion/?valoracion=true&articulo=${articulo.getId()}'">
                             <span class="glyphicon glyphicon-thumbs-up"></span>Me gusta!<span
                                 class="badge">${valoracionesPositivas}</span>
                         </button>
                         <button type="button" class="btn btn-danger"
-                                onclick="location.href = '/valoracion/?valoracion=false&usuario=${articulo.getAutor().getId()}&articulo=${articulo.getId()}'">
+                                onclick="location.href = '/valoracion/?valoracion=false&articulo=${articulo.getId()}'">
                             <span class="glyphicon glyphicon-thumbs-down"></span>No me gusta!<span
                                 class="badge">${valoracionesNegativas}</span>
                         </button>
@@ -189,7 +191,7 @@
         <div class="card my-4">
             <div class="card-header">
                 <button type="button" class="btn btn-primary"
-                        onclick="">Nuevo articulo
+                        onclick="location.href = '/articulo/nuevo/?autor=${usuario.getId()}'">Nuevo articulo
                 </button>
             </div>
             <div class="card-header">

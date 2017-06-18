@@ -5,7 +5,8 @@ import edu.pucmm.programacionweb2017.service.ServiceArticulo;
 import edu.pucmm.programacionweb2017.service.ServiceUsuario;
 import edu.pucmm.programacionweb2017.util.Path;
 import edu.pucmm.programacionweb2017.util.VistaUtil;
-import spark.ModelAndView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.Route;
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.Map;
  * Created by gusta on 17-Jun-17.
  */
 public class InicioController {
+    private static final Logger logger = LoggerFactory.getLogger(InicioController.class);
 
     private static ServiceArticulo serviceArticulo = new ServiceArticulo();
     private static ServiceUsuario serviceUsuario = new ServiceUsuario();

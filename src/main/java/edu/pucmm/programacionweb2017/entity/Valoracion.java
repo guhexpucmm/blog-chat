@@ -16,10 +16,10 @@ public class Valoracion {
     @Column(name = "tipo")
     private boolean tipo;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "usuarioId", unique = true, updatable = false, nullable = false)
+    @JoinColumn(name = "usuarioId", nullable = false)
     private Usuario usuario;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "articuloId", unique = true, updatable = false, nullable = false)
+    @JoinColumn(name = "articuloId", nullable = false)
     private Articulo articulo;
 
     public Valoracion() {

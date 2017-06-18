@@ -36,7 +36,7 @@ public class ServiceValoracion {
         return daoValoracion.encontrarTodos();
     }
 
-    public Usuario encontrarUsuarioValoracion(Usuario usuario) {
-        return daoValoracion.encontrarUsuarioValoracion(usuario);
+    public Valoracion encontrarValoracion(Usuario usuario, Long id) {
+        return daoValoracion.encontrarValoracion(usuario, id);
     }
 }

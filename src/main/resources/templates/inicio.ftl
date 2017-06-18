@@ -13,6 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="/public/css/chat.css">
 
 <#--/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 
@@ -98,13 +99,14 @@
                 <div class="card my-4">
                     <div class="card-header">
                         <button type="button" class="btn btn-primary"
-                                onclick="">Nuevo articulo
+                                onclick="location.href = '/articulo/nuevo/?autor=${usuario.getId()}'">Nuevo articulo
                         </button>
                     </div>
                     <div class="card-header">
 
                         <#if usuario.isAdministrador()>
-                            <button type="button" class="btn btn-primary" onclick="">Nuevo
+                            <button type="button" class="btn btn-primary" onclick="location.href = '/usuario/nuevo/'">
+                                Nuevo
                                 usuario
                             </button>
                         </#if>
@@ -139,6 +141,13 @@
     <!-- /.row -->
 </div>
 <!-- /.container -->
+<div id="chatControls">
+    <input id="message" placeholder="Type your message">
+    <button id="send">Send</button>
+</div>
+<ul id="userlist"> <!-- Built by JS --> </ul>
+<div id="chat">    <!-- Built by JS --> </div>
+<script src="/public/js/websocket.js"></script>
 
 <!-- Footer -->
 <footer class="py-5 bg-inverse">
@@ -152,7 +161,6 @@
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/vendor/tether/tether.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

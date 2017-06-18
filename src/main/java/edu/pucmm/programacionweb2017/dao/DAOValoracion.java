@@ -24,5 +24,5 @@ public interface DAOValoracion extends DAO<Valoracion, Long> {
     @Override
     List<Valoracion> encontrarTodos();
 
-    Usuario encontrarUsuarioValoracion(Usuario usuario);
+    Valoracion encontrarValoracion(Usuario usuario, Long id);
 }

@@ -20,4 +20,6 @@ dependencies {
     compile 'com.sparkjava:spark-debug-tools:0.5'
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
     compile group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.2.5.Final'
+    compile group: 'org.json', name: 'json', version: '20170516'
+    compile group: 'com.j2html', name: 'j2html', version: '1.0.0'
 }
