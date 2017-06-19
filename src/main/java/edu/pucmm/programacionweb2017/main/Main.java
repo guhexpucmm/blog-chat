@@ -1,6 +1,5 @@
 package edu.pucmm.programacionweb2017.main;
 
-import edu.pucmm.programacionweb2017.chat.ChatWebSocketHandler;
 import edu.pucmm.programacionweb2017.controller.*;
 import edu.pucmm.programacionweb2017.database.BootstrapServices;
 import edu.pucmm.programacionweb2017.entity.Usuario;
@@ -19,10 +18,15 @@ public class Main {
         logger.info("Iniciando aplicacion web.");
         enableDebugScreen();
         setConfiguraciones();
+        setWebSocket();
         setServidor();
         setRedireccion();
         setRutas();
         setUsuario();
+    }
+
+    public static void main(String[] args) {
+        new Main();
     }
 
     private static void setUsuario() {
@@ -41,9 +45,8 @@ public class Main {
             serviceUsuario.insertar(usuario);
     }
 
-    public static void main(String[] args) {
-        webSocket(Path.Web.INICIO, ChatWebSocketHandler.class);
-        new Main();
+    private static void setWebSocket() {
+        init();
     }
 
     private void setConfiguraciones() {
@@ -68,6 +71,7 @@ public class Main {
     }
 
     private void setRutas() {
+        logger.info("Mapeando rutas...");
         get(Path.Web.INICIO, InicioController.paginaInicio);
         post(Path.Web.INICIAR_SESION, SesionController.iniciarSesion);
         post(Path.Web.CERRAR_SESION, SesionController.cerrarSesion);
@@ -82,6 +86,13 @@ public class Main {
         before(Path.Web.MODIFICAR_ARTICULO, FiltroController.filtro);
         get(Path.Web.MODIFICAR_ARTICULO, ArticuloController.paginaModificarArticulo);
         post(Path.Web.MODIFICAR_ARTICULO, ArticuloController.moficarArticulo);
+
+        before(Path.Web.NUEVO_COMENTARIO, FiltroController.filtro);
+        post(Path.Web.NUEVO_COMENTARIO, ComentarioController.crearComentario);
+        before(Path.Web.BORRAR_COMENTARIO, FiltroController.filtro);
+        get(Path.Web.BORRAR_COMENTARIO, ComentarioController.borrarComentario);
+
+        get(Path.Web.ETIQUETA, EtiquetaController.paginaVerEtiqueta);
 
         get(Path.Web.VALORACION, ValoracionController.valoracion);
 

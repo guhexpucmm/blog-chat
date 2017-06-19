@@ -39,7 +39,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="container">
-        <a class="navbar-brand" href="/inicio"> <img width="75" height="75" src="/logopucmm.png"> Blog PUCMM Programacion
+        <a class="navbar-brand" href="/inicio/"> <img width="75" height="75" src="/logopucmm.png"> Blog PUCMM
+            Programacion
             Web 2017</a>
     </div>
 </nav>
@@ -128,11 +129,10 @@
             <!--LOGICA DE ELIMINAR-->
             <div class="card-footer text-muted">Comentario hecho por: <a
                     href="#">${comentario.getAutor().getNombre()}</a>
-                <!--
-                                <button type="button" class="btn btn-default">
-                                    <a href="/eliminarComentario/${articulo.getAutor()}/${comentario.getId()}">Eliminar</a>
-                                </button>
-                                -->
+                <button type="button" class="btn btn-danger"
+                        onclick="location.href = '/comentario/borrar/?articulo=${articulo.getId()}&comentario=${comentario.getId()}'">
+                    Eliminar
+                </button>
             </div>
         </div>
         </#list>
@@ -145,14 +145,14 @@
         <div class="card mb-4">
             <!--<img class="card-img-top img-fluid" src="http://placehold.it/750x300" alt="Card image cap">-->
             <div class="card-block">
-                <form method="post" action="/comentario/?autor=${articulo.getId()}">
+                <form method="post" action="/comentario/nuevo/?articulo=${articulo.getId()}">
                     <h2 class="card-title">Nuevo comentario:</h2>
                     <p class="card-text">
                         <input class="form-username form-control" style="width:500px;height:250px" type="text" name="Coment"
                                value="" id="Comentario" placeholder="Inserte aqui su comentario.!">
 
                     </p>
-                    <button class="btn btn-success" type="submit">Sumbit</button>
+                    <button class="btn btn-success" type="submit">Agregar comentario</button>
                 </form>
             </div>
         </div>

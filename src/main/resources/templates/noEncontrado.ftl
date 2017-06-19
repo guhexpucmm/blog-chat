@@ -10,7 +10,7 @@
     <div class="jumbotron">
         <h1><i class="fa fa-ban red"></i>Error 404!</h1>
         <p class="lead">Recurso no encontrado..</p>
-        <a href="/inicio">Llevame a la pagina de inicio!</a>
+        <a href="/inicio/">Llevame a la pagina de inicio!</a>
     </div>
 </div>
 </body>

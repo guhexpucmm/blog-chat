@@ -39,7 +39,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="container">
-        <a class="navbar-brand" href="/inicio"> <img width="75" height="75" src="/logopucmm.png"> Blog PUCMM
+        <a class="navbar-brand" href="/inicio////"> <img width="75" height="75" src="/logopucmm.png"> Blog PUCMM
             Programacion Web 2017</a>
     </div>
 </nav>
@@ -83,7 +83,7 @@
                                    placeholder="Etiquetas. Si es mas de una, separarlas por comas.">
                         </div>
                         <button class="btn btn-success" type="submit">Modificar</button>
-                        <button class="btn btn-danger" type="button" onclick="location.href = '/inicio';">Cancelar
+                        <button class="btn btn-danger" type="button" onclick="location.href = '/inicio/';">Cancelar
                         </button>
                     </form>
                     </p>

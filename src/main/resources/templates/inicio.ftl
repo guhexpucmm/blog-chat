@@ -15,6 +15,9 @@
 
     <link rel="stylesheet" href="/public/css/chat.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
 <#--/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 
     <!-- Custom styles for this template -->
@@ -43,7 +46,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="container">
-        <a class="navbar-brand" href="/inicio"> <img width="75" height="75" src="/logopucmm.png"> Blog PUCMM Programacion
+        <a class="navbar-brand" href="/inicio/"> <img width="75" height="75" src="/logopucmm.png"> Blog PUCMM
+            Programacion
             Web 2017</a>
     </div>
 </nav>
@@ -57,24 +61,29 @@
             <h1 class="my-4">&nbsp <small> </small></h1> <!-- ESPACIO VACIO -->
             <!-- Blog Post -->
 
-        <#list articulos as articulo>
-            <div class="card mb-4">
-                <div class="card-block">
-                    <h2 class="card-title">${articulo.getTitulo()}</h2>
-                    <p class="card-text">${articulo.getResumen()}</p>
-                    <button onclick="location.href='/articulo/?id=${articulo.getId()}'" class="btn btn-primary">Leer mas &rarr;</button>
-                </div>
-                <div class="card-footer text-muted">
-                ${articulo.getFecha()} ${articulo.getAutor().getNombre()}
-                </div>
+            <div id="articulos-list">
+                <nav aria-label="Page navigation">
+                    <ul class="list">
+                    <#list articulos as articulo>
+                        <div class="card mb-4">
+                            <div class="card-block">
+                                <h2 class="card-title">${articulo.getTitulo()}</h2>
+                                <p class="card-text">${articulo.getResumen()}</p>
+                                <button onclick="location.href='/articulo/?id=${articulo.getId()}'"
+                                        class="btn btn-primary">Leer mas &rarr;
+                                </button>
+                            </div>
+                            <div class="card-footer text-muted">
+                            ${articulo.getFecha()} ${articulo.getAutor().getNombre()}
+                            </div>
+                        </div>
+                    </#list>
+                    </ul>
+                    <h3>
+                        <ul class="pagination"></ul>
+                    </h3>
+                </nav>
             </div>
-        </#list>
-
-            <!-- Pagination -->
-            <ul class="pagination justify-content-center mb-4">
-                <li class="page-item"><a class="page-link" href="#">&larr; Older</a></li>
-                <li class="page-item"><a class="page-link" href="#">Newer &rarr;</a></li>
-            </ul>
 
         </div>
 
@@ -87,7 +96,7 @@
                     <h5 class="card-header">Bienvenido: </h5>
                     <div class="card-block">
                         <div class="input-group">
-                            <label>Usuario logueado</label>
+                            <label>Bienvenido ${usuario.getNombre()}</label>
                         </div>
                         <div class="input-group">
                             <form method="post" action="/cerrarSesion">
@@ -141,13 +150,6 @@
     <!-- /.row -->
 </div>
 <!-- /.container -->
-<div id="chatControls">
-    <input id="message" placeholder="Type your message">
-    <button id="send">Send</button>
-</div>
-<ul id="userlist"> <!-- Built by JS --> </ul>
-<div id="chat">    <!-- Built by JS --> </div>
-<script src="/public/js/websocket.js"></script>
 
 <!-- Footer -->
 <footer class="py-5 bg-inverse">
@@ -161,6 +163,12 @@
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/vendor/tether/tether.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    var articulos = new List('articulos-list', {
+        valueNames: ['name'],
+        page: 5,
+        pagination: true
+    });
+</script>
 </body>
-
 </html>

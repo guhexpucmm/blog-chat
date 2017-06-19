@@ -15,6 +15,8 @@ import java.util.Map;
 public class InicioController {
     private static final Logger logger = LoggerFactory.getLogger(InicioController.class);
 
+    private static int pagina = 1;
+
     private static ServiceArticulo serviceArticulo = new ServiceArticulo();
     private static ServiceUsuario serviceUsuario = new ServiceUsuario();
 

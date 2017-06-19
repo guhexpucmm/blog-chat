@@ -41,7 +41,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="container">
-        <a class="navbar-brand" href="/inicio"> <img width="75" height="75" src="/logopucmm.png"> Blog PUCMM
+        <a class="navbar-brand" href="/inicio//"> <img width="75" height="75" src="/logopucmm.png"> Blog PUCMM
             Programacion
             Web 2017</a>
     </div>
@@ -88,7 +88,7 @@
                         </div>
                         </p>
                         <button class="btn btn-primary" type="submit">Guardar</button>
-                        <button class="btn btn-danger" type="button" onclick="location.href = '/inicio';">Cancelar
+                        <button class="btn btn-danger" type="button" onclick="location.href = '/inicio/';">Cancelar
                         </button>
                     </form>
                 </div>

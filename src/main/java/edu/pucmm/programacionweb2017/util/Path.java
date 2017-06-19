@@ -8,7 +8,7 @@ public class Path {
 
     public static class Web {
         //Ruta inicio por defecto
-        public static String INICIO = "/inicio";
+        public static String INICIO = "/inicio/";
 
         //Inicio sesion
         public static String INICIAR_SESION = "/inicioSesion";
@@ -36,13 +36,17 @@ public class Path {
         public static String ELIMINAR_ETIQUETA = "/etiqueta/eliminar/";
         public static String VER_ARTICULOS_POR_ETIQUETAS = "/etiqueta/articulos/";
 
+        public static String NUEVO_COMENTARIO = "/comentario/nuevo/";
+        public static String BORRAR_COMENTARIO = "/comentario/borrar/";
+
         //AUTH STATUS
         public static String AUTH_STATUS = "AUTH_STATUS";
 
         //No encontrado
         public static String NO_TIENE_PERMISOS = "/error";
 
-        //No tiene permisos
+        //Chat
+        public static String CHAT = "/chat";
     }
 
     public static class Template {
@@ -53,6 +57,8 @@ public class Path {
         public static String MODIFICAR_ARTICULO = "articulo/modificar.ftl";
 
         public static String NUEVO_USUARIO = "usuario/nuevo.ftl";
+
+        public static String VER_ETIQUETA = "etiqueta/ver.ftl";
 
         public static String NO_TIENE_PERMISOS = "noTienePermiso.ftl";
         public static String NO_ENCONTRADO = "noEncontrado.ftl";
