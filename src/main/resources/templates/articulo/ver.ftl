@@ -51,7 +51,7 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
             <h1 class="my-4">&nbsp <small> </small></h1> <!-- ESPACIO VACIO -->
-            <VER_ARTICULOCULO -->
+
             <div class="card mb-4">
                 <div class="card-block">
                     <h2 class="card-title">${articulo.getTitulo()}</h2>

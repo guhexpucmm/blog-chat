@@ -13,7 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="/public/css/chat.css">
+    <link rel="stylesheet" href="/css/chat.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/blog-home.css" rel="stylesheet">
+    <link href="/css/chat.css">
 
     <!-- Temporary navbar container fix -->
     <style>
@@ -61,6 +62,7 @@
             <h1 class="my-4">&nbsp <small> </small></h1> <!-- ESPACIO VACIO -->
             <!-- Blog Post -->
 
+            <!-- Paginacion -->
             <div id="articulos-list">
                 <nav aria-label="Page navigation">
                     <ul class="list">
@@ -115,11 +117,15 @@
 
                         <#if usuario.isAdministrador()>
                             <button type="button" class="btn btn-primary" onclick="location.href = '/usuario/nuevo/'">
-                                Nuevo
-                                usuario
+                                Nuevo usuario
                             </button>
                         </#if>
-
+                    </div>
+                    <div class="card-header">
+                        <button type="button" class="btn btn-primary" onclick="location.href = '/salaChat'"
+                        ">
+                        Sala chat
+                        </button>
                     </div>
                 </div>
             <#else>
@@ -144,6 +150,21 @@
                     </div>
                 </div>
             </#if>
+
+                <!--CHAT BOX-->
+                <div class="card my-4 chat">
+                    <h5 class="card-header">Chat</h5>
+                    <div class="card-block">
+                        <div id="chat" class="scrollable">
+
+                        </div>
+                        <div class="input-group">
+                            <input class="form-control" type="text" id="mensaje" class="controles">
+                            <button class="btn btn-primary" type="button" id="enviar">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+
 
         </div>
     </div>
@@ -171,4 +192,5 @@
     });
 </script>
 </body>
+<script src="/js/chat.js"></script>
 </html>

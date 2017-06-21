@@ -46,7 +46,8 @@ public class Path {
         public static String NO_TIENE_PERMISOS = "/error";
 
         //Chat
-        public static String CHAT = "/chat";
+        public static String WEBSOCKET_CHAT = "/chat";
+        public static String SALA_CHAT = "/salaChat";
     }
 
     public static class Template {
@@ -59,6 +60,8 @@ public class Path {
         public static String NUEVO_USUARIO = "usuario/nuevo.ftl";
 
         public static String VER_ETIQUETA = "etiqueta/ver.ftl";
+
+        public static String SALA_CHAT = "salaChat.ftl";
 
         public static String NO_TIENE_PERMISOS = "noTienePermiso.ftl";
         public static String NO_ENCONTRADO = "noEncontrado.ftl";

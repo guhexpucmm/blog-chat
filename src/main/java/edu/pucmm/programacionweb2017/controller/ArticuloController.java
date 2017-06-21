@@ -18,6 +18,7 @@ import java.util.*;
 public class ArticuloController {
     private static final Logger logger = LoggerFactory.getLogger(ArticuloController.class);
 
+    private static ServiceEtiqueta serviceEtiqueta = new ServiceEtiqueta();
     private static ServiceArticulo serviceArticulo = new ServiceArticulo();
     public static Route eliminarArticulo = (request, response) -> {
         Articulo articulo = serviceArticulo.encontrarPorId(Long.parseLong(request.queryParams("id")));
@@ -26,6 +27,34 @@ public class ArticuloController {
 
         response.redirect(Path.Web.INICIO);
 
+        return null;
+    };
+    public static Route moficarArticulo = (request, response) -> {
+        Set<Etiqueta> etiquetas = new HashSet<>();
+        Articulo articulo = serviceArticulo.encontrarPorId(Long.parseLong(request.queryParams("id")));
+
+        for (String string : Arrays.asList(request.queryMap().get("Eti").value().split(","))) {
+            Etiqueta etiqueta = serviceEtiqueta.encontrarPorEtiqueta(string);
+            if (etiqueta != null) {
+                etiquetas.add(etiqueta);
+            } else {
+                etiquetas.add(new Etiqueta(string));
+            }
+        }
+
+        String titulo = request.queryParams("Titu");
+        String cuerpo = request.queryParams("Cuer");
+        Usuario usuario = articulo.getAutor();
+
+        articulo.setTitulo(titulo);
+        articulo.setCuerpo(cuerpo);
+        articulo.setAutor(usuario);
+        articulo.setFecha(new Date());
+        articulo.setListaEtiquetas(etiquetas);
+
+        serviceArticulo.actualizar(articulo);
+
+        response.redirect(Path.Web.INICIO);
         return null;
     };
     private static ServiceComentario serviceComentario = new ServiceComentario();
@@ -43,11 +72,10 @@ public class ArticuloController {
         map.put("valoracionesPositivas", serviceArticulo.obtenerValoracionesPositivas(articulo).size());
         map.put("valoracionesNegativas", serviceArticulo.obtenerValoracionesNegativas(articulo).size());
         map.put("usuario", usuario);
-        map.put("comentarios", serviceComentario.encontrarTodos());
+        map.put("comentarios", articulo.getListaComentarios());
 
         return new VistaUtil().render(map, Path.Template.VER_ARTICULO);
     };
-
     public static Route paginaNuevoArticulo = (request, response) -> {
         Map<String, Object> map = new HashMap<>();
         Usuario usuario = serviceUsuario.encontrarPorNombreUsuario(request.session().attribute("username"));
@@ -80,7 +108,6 @@ public class ArticuloController {
 
         return new VistaUtil().render(map, Path.Template.MODIFICAR_ARTICULO);
     };
-    private static ServiceEtiqueta serviceEtiqueta = new ServiceEtiqueta();
     public static Route crearNuevoArticulo = (request, response) -> {
         Map<String, Object> map = new HashMap<>();
         Set<Etiqueta> etiquetas = new HashSet<>();
@@ -114,33 +141,5 @@ public class ArticuloController {
         response.redirect(Path.Web.INICIO);
 
         return new VistaUtil().render(map, Path.Template.INICIO);
-    };
-    public static Route moficarArticulo = (request, response) -> {
-        Set<Etiqueta> etiquetas = new HashSet<>();
-        Articulo articulo = serviceArticulo.encontrarPorId(Long.parseLong(request.queryParams("id")));
-
-        for (String string : Arrays.asList(request.queryMap().get("Eti").value().split(","))) {
-            Etiqueta etiqueta = serviceEtiqueta.encontrarPorEtiqueta(string);
-            if (etiqueta != null) {
-                etiquetas.add(etiqueta);
-            } else {
-                etiquetas.add(new Etiqueta(string));
-            }
-        }
-
-        String titulo = request.queryParams("Titu");
-        String cuerpo = request.queryParams("Cuer");
-        Usuario usuario = articulo.getAutor();
-
-        articulo.setTitulo(titulo);
-        articulo.setCuerpo(cuerpo);
-        articulo.setAutor(usuario);
-        articulo.setFecha(new Date());
-        articulo.setListaEtiquetas(etiquetas);
-
-        serviceArticulo.actualizar(articulo);
-
-        response.redirect(Path.Web.INICIO);
-        return null;
     };
 }
