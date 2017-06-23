@@ -3,12 +3,14 @@ package edu.pucmm.programacionweb2017.controller;
 import edu.pucmm.programacionweb2017.util.Path;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import spark.Request;
+import spark.Response;
 import spark.Route;
 
 public class SesionController {
     private static final Logger logger = LoggerFactory.getLogger(SesionController.class);
 
-    public static Route iniciarSesion = (request, response) -> {
+    public static Route iniciarSesion = (Request request, Response response) -> {
         request.session(true);
         request.session().maxInactiveInterval(60);//60 segundos para invalidar la sesion si esta inactivo
         request.session().attribute("username", request.queryParams("User"));

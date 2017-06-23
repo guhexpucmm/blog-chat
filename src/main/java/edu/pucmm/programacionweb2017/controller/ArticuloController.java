@@ -76,6 +76,7 @@ public class ArticuloController {
 
         return new VistaUtil().render(map, Path.Template.VER_ARTICULO);
     };
+
     public static Route paginaNuevoArticulo = (request, response) -> {
         Map<String, Object> map = new HashMap<>();
         Usuario usuario = serviceUsuario.encontrarPorNombreUsuario(request.session().attribute("username"));
@@ -84,6 +85,7 @@ public class ArticuloController {
 
         return new VistaUtil().render(map, Path.Template.NUEVO_ARTICULO);
     };
+
     public static Route paginaModificarArticulo = (request, response) -> {
         Map<String, Object> map = new HashMap<>();
         Articulo articulo = serviceArticulo.encontrarPorId(Long.parseLong(request.queryParams("id")));
@@ -108,6 +110,7 @@ public class ArticuloController {
 
         return new VistaUtil().render(map, Path.Template.MODIFICAR_ARTICULO);
     };
+
     public static Route crearNuevoArticulo = (request, response) -> {
         Map<String, Object> map = new HashMap<>();
         Set<Etiqueta> etiquetas = new HashSet<>();

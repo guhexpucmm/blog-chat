@@ -18,19 +18,16 @@ public class WebSocketController {
 
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
-        String username = "User" + Main.nextUserNumber++;
+        String username = "Usuario" + Main.nextUserNumber++;
         userUsernameMap.put(user, username);
-        broadcastMessage(sender = "Server", msg = (username + " joined the chat"));
-
-        Session s = user;
-        s.getUpgradeRequest();
+        broadcastMessage(sender = "Servidor", msg = (username + " se unio al chat."));
     }
 
     @OnWebSocketClose
     public void onClose(Session user, int statusCode, String reason) {
         String username = userUsernameMap.get(user);
         userUsernameMap.remove(user);
-        broadcastMessage(sender = "Server", msg = (username + " left the chat"));
+        broadcastMessage(sender = "Servidor", msg = (username + " se fue del chat.                                                                                                                                                                                                                                                                                                  "));
     }
 
     @OnWebSocketMessage

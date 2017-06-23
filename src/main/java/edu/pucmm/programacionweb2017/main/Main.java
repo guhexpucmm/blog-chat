@@ -84,10 +84,8 @@ public class Main {
     //Builds a HTML element with a sender-name, a message, and a timestamp,
     private static String createHtmlMessageFromSender(String sender, String message) {
         return article(
-                b(sender + " says:"),
-                span(attrs(".timestamp"), new SimpleDateFormat("HH:mm:ss").format(new Date())),
-                p(message)
-        ).render();
+                b("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] " + sender + " dice:"),
+                p(message)).render();
     }
 
     private void setConfiguraciones() {
