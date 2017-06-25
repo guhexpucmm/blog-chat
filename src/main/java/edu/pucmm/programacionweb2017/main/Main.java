@@ -50,7 +50,7 @@ public class Main {
         logger.info("Configurando usuario por defecto.");
         Usuario usuario = new Usuario(
                 "admin",
-                "Gustavo",
+                "Administrador",
                 "admin",
                 true,
                 true
