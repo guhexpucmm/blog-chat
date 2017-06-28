@@ -17,13 +17,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-<script src="/js/pagination.js"></script>
 
 <#--/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 
 <!-- Custom styles for this template -->
 <link href="/css/blog-home.css" rel="stylesheet">
-<link href="/css/chat.css">
 
 
 </head>

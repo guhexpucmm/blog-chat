@@ -134,8 +134,8 @@ public class Main {
 
         get("/articulos/:pagina", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-            int inicio = (Integer.parseInt(request.params("pagina")) * 5) - 4;
-            int fin = inicio + 4;
+            int inicio = (Integer.parseInt(request.params("pagina")) * 5) - 5;
+            int fin = inicio + 5;
 
             attributes.put("articulos", serviceArticulo.obtenerArticulosPaginacion(inicio, fin));
 
