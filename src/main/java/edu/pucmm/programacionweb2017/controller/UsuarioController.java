@@ -8,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.Route;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UsuarioController {
@@ -37,4 +39,14 @@ public class UsuarioController {
         response.redirect(Path.Web.INICIO);
         return null;
     };
+
+    public static List<Usuario> buscarAdmins(){
+        List<Usuario> listaAdms=new ArrayList<>();
+        for(int i=0;i<serviceUsuario.encontrarTodos().size();i++){
+            if(serviceUsuario.encontrarTodos().get(i).isAdministrador()){
+                listaAdms.add(serviceUsuario.encontrarTodos().get(i));
+            }
+        }
+        return listaAdms;
+    }
 }

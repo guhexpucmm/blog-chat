@@ -5,10 +5,14 @@ import edu.pucmm.programacionweb2017.database.BootstrapServices;
 import edu.pucmm.programacionweb2017.entity.Usuario;
 import edu.pucmm.programacionweb2017.service.ServiceUsuario;
 import edu.pucmm.programacionweb2017.util.Path;
+import edu.pucmm.programacionweb2017.websocket.ServidorMensajesWebSocketHandler;
+import freemarker.template.Configuration;
 import org.eclipse.jetty.websocket.api.Session;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import spark.ModelAndView;
+import spark.template.freemarker.FreeMarkerEngine;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -16,8 +20,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static j2html.TagCreator.*;
@@ -42,8 +45,72 @@ public class Main {
         setUsuario();
     }
 
+    public static Map<String,Session> usuariosConectados = new HashMap<>();
+
+
     public static void main(String[] args) {
+        webSocket("/mensajeServidor", ServidorMensajesWebSocketHandler.class);
         new Main();
+
+
+
+        //CHAT
+        ServiceUsuario serviceUsuario = new ServiceUsuario();
+        Configuration configuration = new Configuration(Configuration.VERSION_2_3_23);
+        configuration.setClassForTemplateLoading(Main.class, "/templates/");
+        FreeMarkerEngine freeMarkerEngine = new FreeMarkerEngine(configuration);
+
+        get("/administradoresConectados", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            Usuario u = new Usuario();
+            u.setAutor(false);
+            u.setAdministrador(false);
+            System.out.println(request.queryParams("nombre"));
+            u.setUsername(request.queryParams("nombre"));
+            u.setEsInvitado(true);
+
+            attributes.put("administradores",UsuarioController.buscarAdmins());
+            attributes.put("usuario",u);
+            return new ModelAndView(attributes, "/chat/showAdmins.ftl");
+        }, freeMarkerEngine);
+
+        get("/chatRoom/:admin/:nombre", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            Usuario u = request.session().attribute("usuario");
+            if(u==null){
+                u = new Usuario();
+                u.setAutor(false);
+                u.setAdministrador(false);
+                u.setUsername(request.params("nombre"));
+                u.setEsInvitado(true);
+            }
+            Usuario a = serviceUsuario.encontrarPorNombreUsuario(request.params("admin"));
+            //Usuario a = UsuarioServices.getInstancia().find(request.params("admin"));
+            if(a==null){
+                response.redirect("/");
+            }
+            attributes.put("administrador",a);
+            attributes.put("usuario",u);
+            return new ModelAndView(attributes, "/chat/chatUser.ftl");
+        }, freeMarkerEngine);
+
+        get("/chatRoom", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            String us = request.session().attribute("username");
+           //String usuario = request.queryParams("nombreUsuario");
+            Usuario u = serviceUsuario.encontrarPorNombreUsuario(us);
+           // System.out.println(u.getNombre());
+            if(u==null){
+                u = new Usuario();
+                u.setAutor(false);
+                u.setAdministrador(false);
+                u.setUsername("invitado");
+                u.setEsInvitado(true);
+            }
+            attributes.put("usuario",u);
+            return new ModelAndView(attributes, "/chat/admin-autorChatroom.ftl");
+        }, freeMarkerEngine);
+
     }
 
     private static void setUsuario() {

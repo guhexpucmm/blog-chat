@@ -21,6 +21,15 @@ public class Usuario {
     @Column(name = "autor")
     private boolean autor;
 
+    public boolean isEsInvitado() {
+        return esInvitado;
+    }
+    public void setEsInvitado(boolean esInvitado) {
+        this.esInvitado = esInvitado;
+    }
+
+    private boolean esInvitado;
+
     public Usuario() {
     }
 
