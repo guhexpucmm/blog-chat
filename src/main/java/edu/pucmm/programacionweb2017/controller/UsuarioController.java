@@ -40,13 +40,15 @@ public class UsuarioController {
         return null;
     };
 
-    public static List<Usuario> buscarAdmins(){
-        List<Usuario> listaAdms=new ArrayList<>();
+    public static List<Usuario> buscarAdminsAutores(){
+        List<Usuario> listaAdmsAutores=new ArrayList<>();
         for(int i=0;i<serviceUsuario.encontrarTodos().size();i++){
-            if(serviceUsuario.encontrarTodos().get(i).isAdministrador()){
-                listaAdms.add(serviceUsuario.encontrarTodos().get(i));
+            if(serviceUsuario.encontrarTodos().get(i).isAdministrador() || serviceUsuario.encontrarTodos().get(i).isAutor()){
+                listaAdmsAutores.add(serviceUsuario.encontrarTodos().get(i));
             }
         }
-        return listaAdms;
+        return listaAdmsAutores;
     }
+
+
 }

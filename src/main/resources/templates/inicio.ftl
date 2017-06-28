@@ -91,15 +91,15 @@
 
         <!-- Sidebar Widgets Column -->
         <div class="col-md-3">
-
+            <h1 class="my-4">&nbsp <small> </small></h1> <!-- ESPACIO VACIO -->
             <div class="card my-4">
+
                 <h5 class="card-header">Chatea con un administrador: </h5>
                 <form action="/administradoresConectados" role="form">
                         <label for="nombre">Digita tu nombre:</label>
                         <input type="text" class="form-control" name="nombre">
                     <button class="btn btn-primary" type="submit">Ver administradores disponibles</button>
                 </form>
-
 
             </div>
 
@@ -131,17 +131,14 @@
                                 Nuevo usuario
                             </button>
                         </#if>
-                        <#if usuario.isAdministrador()>
-                            <button type="button" class="btn btn-primary" onclick="location.href = '/chatRoom'">
-                                CHAT ADMINISTRADOR
-                            </button>
-                        </#if>
+
                     </div>
                     <div class="card-header">
-                        <button type="button" class="btn btn-primary" onclick="location.href = '/salaChat'"
-                        ">
-                        Sala chat
-                        </button>
+                        <#if usuario.isAdministrador() || usuario.isAutor() >
+                            <button type="button" class="btn btn-primary" onclick="location.href = '/chatRoom'">
+                                Sala Chat
+                            </button>
+                        </#if>
                     </div>
                 </div>
             <#else>

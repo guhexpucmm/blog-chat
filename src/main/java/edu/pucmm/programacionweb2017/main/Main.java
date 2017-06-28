@@ -69,7 +69,8 @@ public class Main {
             u.setUsername(request.queryParams("nombre"));
             u.setEsInvitado(true);
 
-            attributes.put("administradores",UsuarioController.buscarAdmins());
+            attributes.put("administradoresautores",UsuarioController.buscarAdminsAutores());
+
             attributes.put("usuario",u);
             return new ModelAndView(attributes, "/chat/showAdmins.ftl");
         }, freeMarkerEngine);
@@ -109,6 +110,25 @@ public class Main {
             }
             attributes.put("usuario",u);
             return new ModelAndView(attributes, "/chat/admin-autorChatroom.ftl");
+        }, freeMarkerEngine);
+
+        get("/chatRoom/autor", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            Usuario u = new Usuario();
+            u.setAutor(false);
+            u.setAdministrador(false);
+            System.out.println(request.queryParams("nombre"));
+            u.setUsername(request.queryParams("nombre"));
+            u.setEsInvitado(true);
+
+            Usuario a = serviceUsuario.encontrarPorNombreUsuario(request.params("autor"));
+            if(a==null){
+                response.redirect("/");
+            }
+
+            attributes.put("usuario",u);
+            attributes.put("administrador",a);
+            return new ModelAndView(attributes, "chatUser.ftl");
         }, freeMarkerEngine);
 
     }
