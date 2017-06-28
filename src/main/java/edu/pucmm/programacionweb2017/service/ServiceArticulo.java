@@ -53,4 +53,8 @@ public class ServiceArticulo{
     public List<Articulo> obtenerArticulosPaginacion(int inicio, int fin) {
         return daoArticulo.obtenerArticulosPaginacion(inicio, fin);
     }
+
+    public Long totalArticulos() {
+        return daoArticulo.totalArticulos();
+    }
 }

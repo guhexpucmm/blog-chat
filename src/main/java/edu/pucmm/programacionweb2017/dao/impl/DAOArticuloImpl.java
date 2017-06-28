@@ -175,4 +175,25 @@ public class DAOArticuloImpl extends DAOImpl<Articulo, Long> implements DAOArtic
         }
     }
 
+    @Override
+    public Long totalArticulos() {
+        Session session = null;
+        Transaction transaction = null;
+        Query query = null;
+
+        try {
+            session = HibernateUtil.openSession();
+            transaction = session.beginTransaction();
+
+            query = session.createQuery("select count(a.id) from Articulo a");
+
+            return (Long) query.uniqueResult();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            logger.debug("Error al ejecutar un select el objeto en la base de datos.", e);
+            return null;
+        } finally {
+            session.close();
+        }
+    }
 }

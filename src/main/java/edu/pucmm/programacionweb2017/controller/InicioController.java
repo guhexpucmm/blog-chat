@@ -15,8 +15,6 @@ import java.util.Map;
 public class InicioController {
     private static final Logger logger = LoggerFactory.getLogger(InicioController.class);
 
-    private static int pagina = 1;
-
     private static ServiceArticulo serviceArticulo = new ServiceArticulo();
     private static ServiceUsuario serviceUsuario = new ServiceUsuario();
 
@@ -26,10 +24,15 @@ public class InicioController {
         String username = request.session().attribute("username");
         String password = request.session().attribute("password");
 
+        double totalArticulos = serviceArticulo.totalArticulos();
+        double totalPaginas = totalArticulos / 5;
+        totalPaginas = Math.ceil(totalPaginas);
+
         Usuario usuario = serviceUsuario.existe(username, password);
 
         mapa.put("usuario", usuario);
         mapa.put("articulos", serviceArticulo.encontrarTodos());
+        mapa.put("paginas", totalPaginas);
 
         return new VistaUtil().render(mapa, Path.Template.INICIO);
     };

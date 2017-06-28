@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset=" utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -17,6 +17,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="/js/pagination.js"></script>
 
 <#--/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 
@@ -63,29 +64,38 @@
             <!-- Blog Post -->
 
             <!-- Paginacion -->
-            <div id="articulos-list">
-                <nav aria-label="Page navigation">
-                    <ul class="list">
-                    <#list articulos as articulo>
-                        <div class="card mb-4">
-                            <div class="card-block">
-                                <h2 class="card-title">${articulo.getTitulo()}</h2>
-                                <p class="card-text">${articulo.getResumen()}</p>
-                                <button onclick="location.href='/articulo/?id=${articulo.getId()}'"
-                                        class="btn btn-primary">Leer mas &rarr;
-                                </button>
-                            </div>
-                            <div class="card-footer text-muted">
-                            ${articulo.getFecha()} ${articulo.getAutor().getNombre()}
-                            </div>
-                        </div>
-                    </#list>
-                    </ul>
-                    <h3>
-                        <ul class="pagination"></ul>
-                    </h3>
-                </nav>
+            <p id="totalPaginas" hidden>${paginas}</p>
+
+            <div class="principal">
+
             </div>
+
+            <div id="pagin">
+            </div>
+
+        <#--<div id="articulos-list">-->
+        <#--<nav aria-label="Page navigation">-->
+        <#--<ul class="list">-->
+        <#--<#list articulos as articulo>-->
+        <#--<div class="card mb-4">-->
+        <#--<div class="card-block">-->
+        <#--<h2 class="card-title">${articulo.getTitulo()}</h2>-->
+        <#--<p class="card-text">${articulo.getResumen()}</p>-->
+        <#--<button onclick="location.href='/articulo/?id=${articulo.getId()}'"-->
+        <#--class="btn btn-primary">Leer mas &rarr;-->
+        <#--</button>-->
+        <#--</div>-->
+        <#--<div class="card-footer text-muted">-->
+        <#--${articulo.getFecha()} ${articulo.getAutor().getNombre()}-->
+        <#--</div>-->
+        <#--</div>-->
+        <#--</#list>-->
+        <#--</ul>-->
+        <#--<h3>-->
+        <#--<ul class="pagination"></ul>-->
+        <#--</h3>-->
+        <#--</nav>-->
+        <#--</div>-->
 
         </div>
 

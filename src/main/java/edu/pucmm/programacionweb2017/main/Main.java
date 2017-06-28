@@ -3,6 +3,7 @@ package edu.pucmm.programacionweb2017.main;
 import edu.pucmm.programacionweb2017.controller.*;
 import edu.pucmm.programacionweb2017.database.BootstrapServices;
 import edu.pucmm.programacionweb2017.entity.Usuario;
+import edu.pucmm.programacionweb2017.service.ServiceArticulo;
 import edu.pucmm.programacionweb2017.service.ServiceUsuario;
 import edu.pucmm.programacionweb2017.util.Path;
 import edu.pucmm.programacionweb2017.websocket.ServidorMensajesWebSocketHandler;
@@ -20,7 +21,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static j2html.TagCreator.*;
@@ -28,11 +31,12 @@ import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
 public class Main {
+    public static final ServiceArticulo serviceArticulo = new ServiceArticulo();
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
-
     // this map is shared between sessions and threads, so it needs to be thread-safe (http://stackoverflow.com/a/2688817)
     public static Map<Session, String> userUsernameMap = new ConcurrentHashMap<>();
     public static int nextUserNumber = 1; //Assign to username for next connecting user
+    public static Map<String, Session> usuariosConectados = new HashMap<>();
 
     private Main() {
         logger.info("Iniciando aplicacion web.");
@@ -44,9 +48,6 @@ public class Main {
         setRutas();
         setUsuario();
     }
-
-    public static Map<String,Session> usuariosConectados = new HashMap<>();
-
 
     public static void main(String[] args) {
         webSocket("/mensajeServidor", ServidorMensajesWebSocketHandler.class);
@@ -131,6 +132,15 @@ public class Main {
             return new ModelAndView(attributes, "chatUser.ftl");
         }, freeMarkerEngine);
 
+        get("/articulos/:pagina", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            int inicio = (Integer.parseInt(request.params("pagina")) * 5) - 4;
+            int fin = inicio + 4;
+
+            attributes.put("articulos", serviceArticulo.obtenerArticulosPaginacion(inicio, fin));
+
+            return new ModelAndView(attributes, "articulos.ftl");
+        }, freeMarkerEngine);
     }
 
     private static void setUsuario() {
