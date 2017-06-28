@@ -74,17 +74,11 @@
                                    placeholder="Contrasena del usuario" required><br>
                         <div>
                             <label for="Administrador">Administrador: </label>
-                            <label for="SiAd">Si</label>
-                            <input type="checkbox" name="Adm" value="true" id="SiAd">
-                            <label for="NoAd">No</label>
-                            <input type="checkbox" name="Adm" value="false" id="NoAd" checked>
-                        </div>
-                        <div>
+                            <input type="checkbox" name="Adm" value="true">
+                            <input type="hidden" name="Adm" value="false">
                             <label for="Autor">Autor: </label>
-                            <label for="SiAu">Si</label>
-                            <input type="checkbox" name="Aut" value="true" id="SiAu">
-                            <label for="NoAu">No</label>
-                            <input type="checkbox" name="Aut" value="false" id="NoAu" checked>
+                            <input type="checkbox" name="Aut" value="true">
+                            <input type="hidden" name="Aut" value="false">
                         </div>
                         </p>
                         <button class="btn btn-primary" type="submit">Guardar</button>
