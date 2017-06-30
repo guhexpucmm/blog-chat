@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     $('.pNumber').click(function () {
         $.ajax({
-            url: '/articulos/' + "/" + $(this).text(), success: function (data) {
+            url: '/articulos' + "/" + $(this).text(), success: function (data) {
                 $('.principal').html(data);
             }
         });

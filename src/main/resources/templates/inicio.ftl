@@ -207,13 +207,6 @@
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/vendor/tether/tether.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script>
-    var articulos = new List('articulos-list', {
-        valueNames: ['name'],
-        page: 5,
-        pagination: true
-    });
-</script>
 </body>
 <script src="/js/chat.js"></script>
 </html>
